@@ -1,8 +1,7 @@
 <template>
   <header class="main-header">
-    <div class="logo">R</div>
     <div class="main-title">
-      HSBC - Sapient / Pilot Skill Launch
+      PROJECT NAME
     </div>
     <div class="audio-player">
       AUDIO PLAYER
@@ -18,9 +17,11 @@ export default {
 
 <style lang="scss">
 .main-header {
+  align-items: center;
   border-bottom: solid 1px $color-line-grey;
   display: flex;
   flex-wrap: wrap;
+  height: $desktop__header__height;
   width: 100%;
 }
 </style>

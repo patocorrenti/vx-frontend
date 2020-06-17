@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <Header/>
     <Navigation/>
-    <main class="content">
-      <router-view/>
-    </main>
+    <div class="content">
+      <Header/>
+      <main class="main-content">
+        <router-view/>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -37,7 +39,16 @@ body {
     box-sizing: border-box;
   }
   .content {
-    width: calc(100% - 86px);
+    padding-left: $desktop__navigation__width;
+    position: relative;
+    width: 100%;
+    > * {
+      box-sizing: border-box;
+    }
+  }
+  .main-content {
+    height: calc(100vh - #{$desktop__header__height});
+    overflow-y: auto;
   }
 }
 </style>
