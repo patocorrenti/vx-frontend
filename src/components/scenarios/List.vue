@@ -26,5 +26,13 @@ export default {
   height: $desktop__main-content__height;
   overflow: auto;
   width: 30%;
+
+  > ul {
+    @include reset-list;
+    
+    > li {
+      border-bottom: solid 1px $color-line-grey;
+    }
+  }
 }
 </style>

@@ -30,5 +30,13 @@ export default {
   flex: 1 1 0;
   height: $desktop__main-content__height;
   overflow: auto;
+
+  > ol {
+    @include reset-list;
+
+    > li {
+      padding: 20px 10px;
+    }
+  }
 }
 </style>
