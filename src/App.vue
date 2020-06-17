@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import Navigation from '@/components/Navigation.vue'
+import Header from '@/components/Header.vue';
+import Navigation from '@/components/Navigation.vue';
 
 export default {
   name: 'App',
@@ -21,7 +21,6 @@ export default {
     Navigation
   }
 }
-
 </script>
 
 <style lang="scss">
@@ -29,6 +28,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 #app {
   color: #2c3e50;
   display: flex;
@@ -42,12 +42,13 @@ body {
     padding-left: $desktop__navigation__width;
     position: relative;
     width: 100%;
+
     > * {
       box-sizing: border-box;
     }
   }
   .main-content {
-    height: calc(100vh - #{$desktop__header__height});
+    height: $desktop__main-content__height;
     overflow-y: auto;
   }
 }

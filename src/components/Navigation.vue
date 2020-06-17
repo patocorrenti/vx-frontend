@@ -1,10 +1,16 @@
 <template>
   <nav class="main-nav">
     <div class="logo">R</div>
-    <router-link to="/user-scenarios">Scenarios</router-link>
+    <router-link to="/scenarios">Scenarios</router-link>
     <router-link to="/">Login</router-link>
   </nav>
 </template>
+
+<script>
+export default {
+  name: 'MainNav',
+}
+</script>
 
 <style lang="scss">
 .main-nav {
@@ -19,5 +25,6 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 2;
 }
 </style>

@@ -1,6 +1,8 @@
+// Colors
 $color-light-grey: #f0f0f0;
 $color-line-grey: #bebebe;
 
 // Layout
 $desktop__navigation__width: 86px;
 $desktop__header__height: 84px;
+$desktop__main-content__height: calc(100vh - #{$desktop__header__height});
