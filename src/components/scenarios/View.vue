@@ -1,13 +1,12 @@
 <template>
   <article class="scenarios-view">
-    <header>
-      <h1>{{ scenario.name }}</h1>
-      <div>Updated {{ scenario.updated }}</div>
+    <header class="scenario-header">
+      <h1 class="title">{{ scenario.name }}</h1>
+      <div class="status">Updated {{ scenario.updated }}</div>
     </header>
-    <ol>
+    <ol class="scenario-content">
       <li v-for="(item, key) in scenario.items" :key="key">
-        {{ item.type }}
-        {{ item.content }}
+        <ScenarioText :item="item"/>
       </li>
       <li>
         {{ scenario.name }} was updated on {{ scenario.updated }}
@@ -19,19 +18,43 @@
 </template>
 
 <script>
+import ScenarioText from '@/components/scenarios/Text.vue';
+
 export default {
   name: 'Scenarios View',
-  props: ['scenario']
+  props: ['scenario'],
+  components: {
+    ScenarioText
+  }
 }
 </script>
 
 <style lang="scss">
 .scenarios-view {
+  box-sizing: border-box;
   flex: 1 1 0;
   height: $desktop__main-content__height;
   overflow: auto;
+  padding: 40px 20px;
 
-  > ol {
+  .scenario-header {
+    margin-bottom: 15px;
+
+    .title {
+      display: inline-block;
+      font-size: 2.5rem;
+      margin: 0;
+      vertical-align: middle;
+    }
+    .status {
+      display: inline-block;
+      font-size: 1.3rem;
+      margin-left: 10px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+  }
+  .scenario-content {
     @include reset-list;
 
     > li {

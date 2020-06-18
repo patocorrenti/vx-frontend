@@ -24,9 +24,14 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
 body {
-  padding: 0;
+  font-size: 1.6rem;
   margin: 0;
+  padding: 0;
 }
 
 #app {
