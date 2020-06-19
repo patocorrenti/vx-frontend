@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Scenarios View Text',
+  name: 'Scenarios_View_Text',
   props: ['item']
 }
 </script>

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'Scenarios List',
+  name: 'Scenarios_List',
   props: ['scenarios']
 }
 </script>

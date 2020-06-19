@@ -21,7 +21,7 @@
 import ScenarioText from '@/components/scenarios/Text.vue';
 
 export default {
-  name: 'Scenarios View',
+  name: 'Scenarios_View',
   props: ['scenario'],
   components: {
     ScenarioText
