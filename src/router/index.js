@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import { auth } from '../store/auth.module';
 
 Vue.use(VueRouter)
 
@@ -39,7 +38,7 @@ router.beforeEach((to, from, next) => {
   }
 
   // redirect to scenarios if user is already logged in
-  if (to.path === '/login' && auth.state.status.loggedIn) {
+  if (to.path === '/login' && loggedIn) {
     next('/scenarios');
   }
 

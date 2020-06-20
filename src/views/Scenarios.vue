@@ -1,5 +1,6 @@
 <template>
   <section class="scenarios-section">
+    {{ scenarios }}
     <ScenariosList :scenarios="scenarios"/>
     <ScenariosView :scenario="content"/>
   </section>
@@ -14,8 +15,11 @@ export default {
   components: {
     ScenariosList, ScenariosView
   },
+  computed: {
+    scenarios () { return this.$store.state.project.projects },
+  },
   data: () => ({
-    scenarios: [
+    sscenarios: [
       {
         name: 'User scenario',
         status: 'Approved',

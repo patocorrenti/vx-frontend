@@ -2,7 +2,7 @@
   <div id="app">
     <Navigation/>
     <div class="content">
-      <Header/>
+      <Header  v-if="loggedIn"/>
       <main class="main-content">
         <router-view/>
       </main>
@@ -19,7 +19,12 @@ export default {
   components: {
     Header,
     Navigation
-  }
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
+  },
 }
 </script>
 

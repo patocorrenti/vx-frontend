@@ -12,6 +12,11 @@
 <script>
 export default {
   name: 'Header',
+  created () {
+    if (!this.$store.state.project.projects.length) {
+      this.$store.dispatch('project/getProjects');
+    }
+  },
 }
 </script>
 
