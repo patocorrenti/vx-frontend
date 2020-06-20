@@ -18,7 +18,7 @@ export default {
   computed: {
     ...mapGetters('project', ['currentProject']),
     scenarios () {
-      return this.currentProject.scenarios
+      return this.currentProject ? this.currentProject.scenarios : false
     } 
   },
   data: () => ({

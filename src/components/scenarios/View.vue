@@ -1,30 +1,43 @@
 <template>
   <article class="scenarios-view">
-    <header class="scenario-header">
-      <h1 class="title">{{ scenario.name }}</h1>
-      <div class="status">Updated {{ scenario.updated }}</div>
-    </header>
-    <ol class="scenario-content">
-      <li v-for="(item, key) in scenario.items" :key="key">
-        <ScenarioText :item="item"/>
-      </li>
-      <li>
-        {{ scenario.name }} was updated on {{ scenario.updated }}
-        <button type="button">Approve</button>
-        <button type="button">Reject</button>
-      </li>
-    </ol>
+    <div v-if="scenarioSelected">
+      {{ currentScenario }}
+      <header class="scenario-header">
+        <h1 class="title">{{ currentScenario.title }}</h1>
+        <div class="status">Updated {{ currentScenario.last_update }}</div>
+      </header>
+      <ol class="scenario-content">
+        <li v-for="(item, key) in scenario.items" :key="key">
+          <ScenarioText :item="item"/>
+        </li>
+        <li>
+          {{ scenario.name }} was updated on {{ scenario.updated }}
+          <button type="button">Approve</button>
+          <button type="button">Reject</button>
+        </li>
+      </ol>
+    </div>
+    <div v-else>
+      Select a User Scenario
+    </div>
   </article>
 </template>
 
 <script>
 import ScenarioText from '@/components/scenarios/Text.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Scenarios_View',
   props: ['scenario'],
   components: {
     ScenarioText
+  },
+  computed: {
+    ...mapState('scenario', ['currentScenario']),
+    scenarioSelected () {
+      return !!this.currentScenario.id
+    }
   }
 }
 </script>

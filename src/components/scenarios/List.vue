@@ -2,7 +2,7 @@
   <nav class="scenarios-list">
     <ul>
       <li v-for="(scenario, key) in scenarios" :key="key">
-        <article class="scenario-item" @click="selectScenario(scenario.id)">
+        <article class="scenario-item" @click="getScenario(scenario.id)">
           <header>
             <h4 class="title">{{ scenario.title }}</h4>
             <div class="status">{{ scenario.status }}</div>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Scenarios_List',
   props: ['scenarios'],
   methods: {
-    selectScenario (num) {
-      console.log('seleccionar scenario ' + num)
-    }
+    ...mapActions('scenario', ['getScenario'])
   }
 }
 </script>
