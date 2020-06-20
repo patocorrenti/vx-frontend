@@ -9,7 +9,8 @@ export const project = {
   namespaced: true,
   state: initialState,
   getters: {
-    currentProject (state) { return state.projects[state.currentProject] }
+    currentProject (state) { return state.projects[state.currentProject] },
+    projectName (state) { return state.projects.length ? state.projects[state.currentProject].name : '' }
   },
   actions: {
     getProjects ({ commit }) {

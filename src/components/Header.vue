@@ -1,7 +1,7 @@
 <template>
   <header class="main-header">
     <div class="main-title">
-      {{ currentProject.name }}
+      {{ projectName }}
     </div>
     <div class="audio-player">
       AUDIO PLAYER
@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('project', ['currentProject'])
+    ...mapGetters('project', ['projectName'])
   },
   methods: {
     ...mapActions('project', ['getProjects'])

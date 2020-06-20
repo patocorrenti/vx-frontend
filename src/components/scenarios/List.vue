@@ -2,7 +2,7 @@
   <nav class="scenarios-list">
     <ul>
       <li v-for="(scenario, key) in scenarios" :key="key">
-        <article class="scenario-item">
+        <article class="scenario-item" @click="selectScenario(scenario.id)">
           <header>
             <h4 class="title">{{ scenario.title }}</h4>
             <div class="status">{{ scenario.status }}</div>
@@ -17,7 +17,12 @@
 <script>
 export default {
   name: 'Scenarios_List',
-  props: ['scenarios']
+  props: ['scenarios'],
+  methods: {
+    selectScenario (num) {
+      console.log('seleccionar scenario ' + num)
+    }
+  }
 }
 </script>
 
