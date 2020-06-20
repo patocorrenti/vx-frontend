@@ -1,12 +1,12 @@
 <template>
   <section class="scenarios-section">
-    {{ scenarios }}
     <ScenariosList :scenarios="scenarios"/>
     <ScenariosView :scenario="content"/>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ScenariosList from '@/components/scenarios/List.vue';
 import ScenariosView from '@/components/scenarios/View.vue';
 
@@ -16,31 +16,12 @@ export default {
     ScenariosList, ScenariosView
   },
   computed: {
-    scenarios () { return this.$store.state.project.projects },
+    ...mapGetters('project', ['currentProject']),
+    scenarios () {
+      return this.currentProject.scenarios
+    } 
   },
   data: () => ({
-    sscenarios: [
-      {
-        name: 'User scenario',
-        status: 'Approved',
-        content: 'Account Linked User (AU) invokes HBSC for the first time, hears welcome message, states Voice PIN successfully, has 1 of each account type available (credit, checking, savings), asks to hear balance and hears balance, is asked if they want to hear other balances, declines and exits skill'
-      },
-      {
-        name: 'User scenario',
-        status: 'Rejected',
-        content: 'Account Linked User (AU) invokes HBSC for the first time, hears welcome message, states Voice PIN successfully, has 1 of each account type available (credit, checking, savings), asks to hear balance and hears balance, is asked if they want to hear other balances, declines and exits skill'
-      },
-      {
-        name: 'User scenario',
-        status: 'Approved',
-        content: 'Account Linked User (AU) invokes HBSC for the first time, hears welcome message, states Voice PIN successfully, has 1 of each account type available (credit, checking, savings), asks to hear balance and hears balance, is asked if they want to hear other balances, declines and exits skill'
-      },
-      {
-        name: 'User scenario',
-        status: 'Approved',
-        content: 'Account Linked User (AU) invokes HBSC for the first time, hears welcome message, states Voice PIN successfully, has 1 of each account type available (credit, checking, savings), asks to hear balance and hears balance, is asked if they want to hear other balances, declines and exits skill'
-      },
-    ],
     content: {
       name: 'User Scenario 02',
       updated: '02/04/2020',

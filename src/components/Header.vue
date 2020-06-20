@@ -1,7 +1,7 @@
 <template>
   <header class="main-header">
     <div class="main-title">
-      PROJECT NAME
+      {{ currentProject.name }}
     </div>
     <div class="audio-player">
       AUDIO PLAYER
@@ -10,13 +10,21 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Header',
   created () {
     if (!this.$store.state.project.projects.length) {
-      this.$store.dispatch('project/getProjects');
+      this.getProjects();
     }
   },
+  computed: {
+    ...mapGetters('project', ['currentProject'])
+  },
+  methods: {
+    ...mapActions('project', ['getProjects'])
+  }
 }
 </script>
 

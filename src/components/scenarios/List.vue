@@ -4,7 +4,7 @@
       <li v-for="(scenario, key) in scenarios" :key="key">
         <article class="scenario-item">
           <header>
-            <h4 class="title">{{ scenario.name }}</h4>
+            <h4 class="title">{{ scenario.title }}</h4>
             <div class="status">{{ scenario.status }}</div>
           </header>
           <p class="excerpt">{{ scenario.content }}</p>

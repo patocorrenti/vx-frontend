@@ -8,6 +8,9 @@ const initialState = {
 export const project = {
   namespaced: true,
   state: initialState,
+  getters: {
+    currentProject (state) { return state.projects[state.currentProject] }
+  },
   actions: {
     getProjects ({ commit }) {
       return ProjectService.getProjects().then(
@@ -23,7 +26,6 @@ export const project = {
   mutations: {
     saveProjects (state, projects) {
       state.projects = projects;
-      state.currentProject = projects.length ? 1 : 0;
     }
   }
 }
