@@ -17,15 +17,19 @@
     <div v-if="errorMessage">
       {{ errorMessage }}
     </div>
-      Loading: {{ loading }}
+    <Loading v-if="loading"/>
   </div>
 </template>
 
 <script>
 import User from "../models/user";
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'Login',
+  components: {
+    Loading
+  },
   data: () => ({
     user: new User(),
     errorMessage: '',
@@ -52,5 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.login {
+  position: relative;
+}
 </style>

@@ -1,19 +1,21 @@
 <template>
   <nav class="main-nav">
     <div class="logo">
-      <router-link to="/">
+      <router-link to="/scenarios">
         <img alt="Rain logo" src="../assets/rain_logo.png">
       </router-link>
     </div>
-    <router-link to="/scenarios">
-      Scenarios
-    </router-link>
-    <a v-if="loggedIn" href="/logout" @click.prevent="logOut">
-      Logout
-    </a>
-    <router-link v-else to="/login">
-      Login
-    </router-link>
+    <div v-if="loggedIn">
+      <router-link to="/scenarios">
+        Scenarios
+      </router-link>
+      <a v-if="loggedIn" href="/logout" @click.prevent="logOut">
+        Logout
+      </a>
+      <router-link v-else to="/login">
+        Login
+      </router-link>
+    </div>
   </nav>
 </template>
 
