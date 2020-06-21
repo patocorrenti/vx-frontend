@@ -30,7 +30,7 @@ import Loading from '@/components/Loading.vue';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'Scenarios_View',
+  name: 'Scenario_View',
   props: ['scenario'],
   components: {
     ScenarioText, Loading

@@ -3,17 +3,19 @@
     <div class="main-title">
       {{ projectName }}
     </div>
-    <div class="audio-player">
-      AUDIO PLAYER
-    </div>
+    <Audioplayer />
   </header>
 </template>
 
 <script>
+import Audioplayer from '@/components/scenarios/Audioplayer.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Header',
+  components: {
+    Audioplayer
+  },
   created () {
     if (!this.$store.state.project.projects.length) {
       this.getProjects();

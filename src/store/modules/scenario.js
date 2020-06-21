@@ -8,9 +8,17 @@ const initialState = {
 export const scenario = {
   namespaced: true,
   state: initialState,
+  getters: {
+    audio (state) { return state.currentScenario.audio }
+  },
   actions: {
     getScenario ({ state, commit }, id) {
+      if (state.currentScenario.id === id)
+        return false;
+      
+      state.currentScenario = {}
       state.loadingScenario = true
+      
       return ScenarioService.getScenario(id).then(
         scenario => {
           commit('saveScenario', scenario);
