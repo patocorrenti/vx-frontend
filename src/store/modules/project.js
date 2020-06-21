@@ -2,7 +2,8 @@ import ProjectService from '../../services/project';
 
 const initialState = {
   projects: [],
-  currentProject: 0
+  currentProject: 0,
+  loadingProjects: false
 }
 
 export const project = {
@@ -13,7 +14,8 @@ export const project = {
     projectName (state) { return state.projects.length ? state.projects[state.currentProject].name : '' }
   },
   actions: {
-    getProjects ({ commit }) {
+    getProjects ({ state, commit }) {
+      state.loadingProjects = true
       return ProjectService.getProjects().then(
         projects => {
           commit('saveProjects', projects);
@@ -21,7 +23,7 @@ export const project = {
         error => {
           return Promise.reject(error);
         }
-      );
+      ).finally( () => { state.loadingProjects = false });
     }
   },
   mutations: {

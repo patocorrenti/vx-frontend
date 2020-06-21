@@ -1,18 +1,16 @@
 import api from './api';
 
 class AuthService {
-  login(user) {
-    return api
+  async login(user) {
+    const response = await api
       .post('token/', {
         username: user.username,
         password: user.password
-      })
-      .then(response => {
-        if (response.data.access) {
-          localStorage.setItem('user', JSON.stringify(response.data));
-        }
-        return response.data;
-      })
+      });
+    if (response.data.access) {
+      localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
   }
 
   logout() {

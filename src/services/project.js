@@ -2,10 +2,10 @@ import api from './api'
 import authHeader from './auth-header'
 
 class ProjectService {
-  getProjects() {
-    return api
-      .get('projects/', { headers: authHeader() })
-      .then(response => (response.data))
+  async getProjects() {
+    const response = await api
+      .get('projects/', { headers: authHeader() });
+    return (response.data);
   }
 }
 

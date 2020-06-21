@@ -6,6 +6,7 @@
       <main class="main-content">
         <router-view/>
       </main>
+      <Loading v-if="loading" text="Loading Projects"/>
     </div>
   </div>
 </template>
@@ -13,16 +14,19 @@
 <script>
 import Header from '@/components/Header.vue';
 import Navigation from '@/components/Navigation.vue';
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Navigation
+    Header, Navigation, Loading
   },
   computed: {
-    loggedIn() {
+    loggedIn () {
       return this.$store.state.auth.status.loggedIn;
+    },
+    loading () {
+      return this.$store.state.project.loadingProjects;
     }
   },
 }

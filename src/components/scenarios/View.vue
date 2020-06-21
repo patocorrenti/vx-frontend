@@ -20,21 +20,23 @@
     <div v-else>
       Select a User Scenario
     </div>
+    <Loading v-if="loadingScenario" text="Loading Scenario"/>
   </article>
 </template>
 
 <script>
 import ScenarioText from '@/components/scenarios/Text.vue';
+import Loading from '@/components/Loading.vue';
 import { mapState } from 'vuex';
 
 export default {
   name: 'Scenarios_View',
   props: ['scenario'],
   components: {
-    ScenarioText
+    ScenarioText, Loading
   },
   computed: {
-    ...mapState('scenario', ['currentScenario']),
+    ...mapState('scenario', ['currentScenario', 'loadingScenario']),
     scenarioSelected () {
       return !!this.currentScenario.id
     }
@@ -49,6 +51,7 @@ export default {
   height: $desktop__main-content__height;
   overflow: auto;
   padding: 40px 20px;
+  position: relative;
 
   .scenario-header {
     margin-bottom: 15px;

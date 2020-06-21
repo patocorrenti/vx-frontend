@@ -1,14 +1,16 @@
 import ScenarioService from '../../services/scenario';
 
 const initialState = {
-  currentScenario: {}
+  currentScenario: {},
+  loadingScenario: false
 }
 
 export const scenario = {
   namespaced: true,
   state: initialState,
   actions: {
-    getScenario ({ commit }, id) {
+    getScenario ({ state, commit }, id) {
+      state.loadingScenario = true
       return ScenarioService.getScenario(id).then(
         scenario => {
           commit('saveScenario', scenario);
@@ -16,7 +18,7 @@ export const scenario = {
         error => {
           return Promise.reject(error);
         }
-      );
+      ).finally( () => { state.loadingScenario = false });
     }
   },
   mutations: {
