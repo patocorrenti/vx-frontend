@@ -7,7 +7,7 @@
             <h4 class="title">{{ scenario.title }}</h4>
             <div class="status">{{ scenario.status }}</div>
           </header>
-          <p class="excerpt">{{ scenario.content }}</p>
+          <p class="excerpt">{{ scenario.setup_instructions }}</p>
         </article>
       </li>
     </ul>

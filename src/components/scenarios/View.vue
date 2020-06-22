@@ -1,17 +1,17 @@
 <template>
   <article class="scenarios-view">
     <div v-if="scenarioSelected">
-      {{ currentScenario }}
       <header class="scenario-header">
         <h1 class="title">{{ currentScenario.title }}</h1>
-        <div class="status">Updated {{ currentScenario.last_update }}</div>
+        <div class="update">Updated {{ currentScenario.last_update }}</div>
+        <div class="status">{{ currentScenario.status }}</div>
       </header>
       <ol class="scenario-content">
-        <li v-for="(item, key) in scenario.items" :key="key">
-          <ScenarioText :item="item"/>
+        <li v-for="(line, key) in currentScenario.text_lines" :key="key">
+          <ScenarioText :line="line"/>
         </li>
         <li>
-          {{ scenario.name }} was updated on {{ scenario.updated }}
+          {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
           <button type="button">Approve</button>
           <button type="button">Reject</button>
         </li>
@@ -62,7 +62,7 @@ export default {
       margin: 0;
       vertical-align: middle;
     }
-    .status {
+    .update {
       display: inline-block;
       font-size: 1.3rem;
       margin-left: 10px;

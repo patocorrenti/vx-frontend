@@ -1,14 +1,15 @@
-<template>
-  <div class="scenario-item-text">
-    <div class="type">{{ item.type }}</div>
-    <div class="text">{{ item.content }}</div>
+<template functional>
+  <div class="scenario-item-text" :class="props.line.text_type">
+    <div class="type">
+      {{ props.line.type_description }}
+    </div>
+    <div class="text">{{ props.line.content }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Scenarios_View_Text',
-  props: ['item']
+  name: 'Scenarios_View_Text'
 }
 </script>
 

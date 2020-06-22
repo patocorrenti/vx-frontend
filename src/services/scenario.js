@@ -2,10 +2,10 @@ import api from './api'
 import authHeader from './auth-header'
 
 class ScenarioService {
-  getScenario(id) {
-    return api
-      .get(`scenarios/${id}`, { headers: authHeader() })
-      .then(response => (response.data))
+  async getScenario(id) {
+    const response = await api
+      .get(`scenarios/${id}`, { headers: authHeader() });
+    return (response.data);
   }
 }
 
