@@ -1,6 +1,6 @@
 <template functional>
   <div class="area-loader">
-    <div class="">ICON</div>
+    <font-awesome-icon icon="spinner" class="icon"/>
     <div v-if="props.text" class="text">{{ props.text }}...</div>
   </div>
 </template>
@@ -21,5 +21,14 @@
   top: 0;
   transform: .5s;
   z-index: 10;
+
+  .icon {
+    animation: fa-spin 1.5s infinite ease-in-out;
+    font-size: 3rem;
+    margin: 0 auto;
+  }
+  .text {
+    margin-top: 10px;
+  }
 }
 </style>

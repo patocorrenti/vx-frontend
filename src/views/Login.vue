@@ -36,7 +36,7 @@
         </button>
       </div>
     </form>
-    <Loading v-if="loading"/>
+    <Loading v-if="loading" />
   </div>
 </template>
 
