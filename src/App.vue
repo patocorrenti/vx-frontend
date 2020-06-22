@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <Navigation/>
+  <div id="app" :class="{loggedIn: loggedIn}">
+    <Navigation v-if="loggedIn"/>
     <div class="content">
       <Header  v-if="loggedIn"/>
       <main class="main-content">
@@ -33,16 +33,6 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  /* 1rem = 10px */
-  font-size: 62.5%;
-}
-body {
-  font-size: 1.6rem;
-  margin: 0;
-  padding: 0;
-}
-
 #app {
   color: #2c3e50;
   display: flex;
@@ -65,5 +55,23 @@ body {
     height: $desktop__main-content__height;
     overflow-y: auto;
   }
+
+  // Login screen
+  &:not(.loggedIn) {
+    background: $color-light-grey;
+
+    .content {
+      padding-left: 0;
+    }
+    .main-content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      padding: 10vh 10px 20px;
+      min-height: 100vh;
+    }
+  }
+
 }
 </style>

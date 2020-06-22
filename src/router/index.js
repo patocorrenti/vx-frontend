@@ -8,6 +8,7 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'Login',
+    class: 'caca',
     component: Login
   },
   {

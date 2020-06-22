@@ -5,28 +5,18 @@
         <img alt="Rain logo" src="../assets/rain_logo.png">
       </router-link>
     </div>
-    <div v-if="loggedIn">
-      <router-link to="/scenarios">
-        Scenarios
-      </router-link>
-      <a v-if="loggedIn" href="/logout" @click.prevent="logOut">
-        Logout
-      </a>
-      <router-link v-else to="/login">
-        Login
-      </router-link>
-    </div>
+    <router-link to="/scenarios">
+      Scenarios
+    </router-link>
+    <a href="/logout" @click.prevent="logOut">
+      Logout
+    </a>
   </nav>
 </template>
 
 <script>
 export default {
   name: 'Navigation',
-  computed: {
-    loggedIn() {
-      return this.$store.state.auth.status.loggedIn;
-    }
-  },
   methods: {
     logOut() {
       this.$store.dispatch('auth/logout');
