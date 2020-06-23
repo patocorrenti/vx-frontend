@@ -5,12 +5,14 @@
         <img alt="Rain logo" src="../assets/rain_logo.png">
       </router-link>
     </div>
-    <router-link to="/scenarios">
-      Scenarios
-    </router-link>
-    <a href="/logout" @click.prevent="logOut">
-      Logout
-    </a>
+    <div class="links">
+      <router-link to="/scenarios" title="Scenarios">
+        <font-awesome-icon icon="layer-group" class="icon"/>
+      </router-link>
+      <a href="/logout" class="logout" @click.prevent="logOut" title="Logout">
+        <font-awesome-icon icon="sign-out-alt" class="icon"/>
+      </a>
+    </div>
   </nav>
 </template>
 
@@ -51,6 +53,28 @@ export default {
       display: block;
       height: auto;
       max-width: 100%;
+    }
+  }
+
+  .links {
+    padding: 10px 5px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    justify-content: space-between;
+
+    a {
+      color: #ababab;
+      display: block;
+      font-size: 3rem;
+      text-align: center;
+      transition-duration: .5s;
+      width: 100%;
+
+      &.router-link-active, &:hover {
+        color: #000;
+      }
     }
   }
 }

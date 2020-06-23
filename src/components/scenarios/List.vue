@@ -55,13 +55,13 @@ export default {
       }
       &:not(.selected) .scenario-item:hover {
         cursor: pointer;
-        padding: 20px 10px 30px;
+        padding: 20px 20px 30px;
       }
     }
   }
   .scenario-item {
     color: $color-text-grey;
-    padding: 25px 10px;
+    padding: 25px 20px;
     transition-duration: .3s;
     
     > header {

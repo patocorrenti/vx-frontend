@@ -42,6 +42,7 @@ export default {
   .main-title {
     font-weight: bold;
     font-size: 2.3rem;
+    padding: 0 20px;
   }
 }
 </style>
