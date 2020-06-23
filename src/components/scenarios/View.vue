@@ -4,7 +4,7 @@
       <header class="scenario-header">
         <h1 class="title">{{ currentScenario.title }}</h1>
         <div class="update">Updated {{ currentScenario.last_update }}</div>
-        <div class="status">{{ currentScenario.status }}</div>
+        <Status :status="currentScenario.status"/>
       </header>
       <ol class="scenario-content">
         <li v-for="(line, key) in currentScenario.text_lines" :key="key">
@@ -14,6 +14,7 @@
           {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
           <button type="button" @click="changeStatus('approved')">Approve</button>
           <button type="button" @click="changeStatus('rejected')">Reject</button>
+          <button type="button" @click="changeStatus('pending')">Undo</button>
         </li>
       </ol>
     </div>
@@ -27,13 +28,14 @@
 <script>
 import ScenarioText from '@/components/scenarios/Text.vue';
 import Loading from '@/components/Loading.vue';
+import Status from '@/components/scenarios/Status.vue';
 import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Scenario_View',
   props: ['scenario'],
   components: {
-    ScenarioText, Loading
+    ScenarioText, Loading, Status
   },
   computed: {
     ...mapState('scenario', ['currentScenario', 'loadingScenario']),

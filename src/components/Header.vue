@@ -38,5 +38,10 @@ export default {
   flex-wrap: wrap;
   height: $desktop__header__height;
   width: 100%;
+
+  .main-title {
+    font-weight: bold;
+    font-size: 2.3rem;
+  }
 }
 </style>

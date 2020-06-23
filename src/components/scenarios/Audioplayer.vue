@@ -3,7 +3,6 @@
     <audio controls>
       <source :src="audio" type="audio/ogg">
     </audio>
-    <a :href="audio" title="Download audio" target="_blank" download>Download</a>
   </div>
 </template>
 

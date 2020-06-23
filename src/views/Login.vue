@@ -109,10 +109,11 @@ export default {
     }
     input {
       border: 1px solid $color-line-grey;
-
+      
       border-left-color: transparent;
       border-right-color: transparent;
       border-top-color: transparent;
+      font-family: 'Circular';
       font-size: 1.8rem;
       padding: 10px 5px;
       transition-duration: .5s;

@@ -1,11 +1,15 @@
 <template>
   <nav class="scenarios-list">
     <ul>
-      <li v-for="(scenario, key) in scenarios" :key="key">
+      <li
+        v-for="(scenario, key) in scenarios"
+        :key="key"
+        :class="{selected: scenario.id === currentScenario.id}"
+      >
         <article class="scenario-item" @click="getScenario(scenario.id)">
           <header>
             <h4 class="title">{{ scenario.title }}</h4>
-            <div class="status">{{ scenario.status }}</div>
+            <Status :status="scenario.status"/>
           </header>
           <p class="excerpt">{{ scenario.setup_instructions }}</p>
         </article>
@@ -15,11 +19,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex'
+import Status from '@/components/scenarios/Status.vue'
 
 export default {
   name: 'Scenarios_List',
   props: ['scenarios'],
+  components: {
+    Status
+  },
+  computed: {
+    ...mapState('scenario', ['currentScenario'])
+  },
   methods: {
     ...mapActions('scenario', ['getScenario'])
   }
@@ -38,29 +49,30 @@ export default {
     
     > li {
       border-bottom: solid 1px $color-line-grey;
+
+      &.selected .scenario-item {
+        color: #000;
+      }
+      &:not(.selected) .scenario-item:hover {
+        cursor: pointer;
+        padding: 20px 10px 30px;
+      }
     }
   }
   .scenario-item {
     color: $color-text-grey;
     padding: 25px 10px;
+    transition-duration: .3s;
     
     > header {
       margin-bottom: 10px;
     }
-
     .title {
       display: inline-block;
       font-size: 1.8rem;
-      font-weight: bold;
+      font-weight: 900;
       margin: 0;
     }
-    .status {
-      display: inline-block;
-      font-size: 1.3rem;
-      margin-left: 10px;
-      text-transform: uppercase;
-    }
-
     .excerpt {
       font-size: 1.8rem;
       margin: 0;
