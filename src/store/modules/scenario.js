@@ -2,7 +2,8 @@ import ScenarioService from '../../services/scenario';
 
 const initialState = {
   currentScenario: {},
-  loadingScenario: false
+  loadingScenario: false,
+  loadingStatus: false
 }
 
 export const scenario = {
@@ -27,11 +28,25 @@ export const scenario = {
           return Promise.reject(error);
         }
       ).finally( () => { state.loadingScenario = false });
+    },
+    changeStatus ({ state, commit }, status) {
+      state.loadingStatus = true;
+      return ScenarioService.changeStatus(state.currentScenario.id, status).then(
+        scenario => {
+          commit('changeStatus', scenario.status);
+        },
+        error => {
+          return Promise.reject(error);
+        }
+      ).finally( () => { state.loadingStatus = false })
     }
   },
   mutations: {
     saveScenario (state, scenario) {
       state.currentScenario = scenario;
+    },
+    changeStatus (state, status) {
+      state.currentScenario.status = status;
     }
   }
 }

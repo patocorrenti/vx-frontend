@@ -10,7 +10,6 @@ export default function setApiInterceptors() {
     if (!config.headers.Authorization) {
       const user = JSON.parse(localStorage.getItem('user'));
       if (user && user.access) {
-        console.log('entro')
         config.headers = { Authorization: `Bearer ${user.access}` };
       }
     }

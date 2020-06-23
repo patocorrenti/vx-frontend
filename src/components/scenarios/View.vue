@@ -12,8 +12,8 @@
         </li>
         <li>
           {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
-          <button type="button">Approve</button>
-          <button type="button">Reject</button>
+          <button type="button" @click="changeStatus('approved')">Approve</button>
+          <button type="button" @click="changeStatus('rejected')">Reject</button>
         </li>
       </ol>
     </div>
@@ -27,7 +27,7 @@
 <script>
 import ScenarioText from '@/components/scenarios/Text.vue';
 import Loading from '@/components/Loading.vue';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Scenario_View',
@@ -40,6 +40,9 @@ export default {
     scenarioSelected () {
       return !!this.currentScenario.id
     }
+  },
+  methods: {
+    ...mapActions('scenario', ['changeStatus'])
   }
 }
 </script>
