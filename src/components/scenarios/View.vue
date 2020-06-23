@@ -17,6 +17,8 @@
           <button type="button" @click="changeStatus('pending')">Undo</button>
         </li>
       </ol>
+      <button type="button">Prev</button>
+      <button type="button">Next</button>
     </div>
     <div v-else>
       Select a User Scenario

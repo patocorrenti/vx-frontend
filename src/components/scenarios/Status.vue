@@ -10,9 +10,9 @@
 .status {
   display: inline-block;
   font-size: 1.3rem;
+  font-weight: bold;
   margin-left: 10px;
   text-transform: uppercase;
-  font-weight: bold;
 
   &.approved {
     color: $color-green;
