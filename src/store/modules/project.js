@@ -29,6 +29,11 @@ export const project = {
   mutations: {
     saveProjects (state, projects) {
       state.projects = projects;
+    },
+    updateScenarioStatus (state, payload) {
+      const scenario = state.projects[state.currentProject].scenarios
+        .find(scenario => scenario.id === payload.id)
+      scenario.status = payload.status;
     }
   }
 }

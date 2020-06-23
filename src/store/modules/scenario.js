@@ -34,6 +34,10 @@ export const scenario = {
       return ScenarioService.changeStatus(state.currentScenario.id, status).then(
         scenario => {
           commit('changeStatus', scenario.status);
+          commit('project/updateScenarioStatus',
+            {'id': state.currentScenario.id, 'status': status},
+            {root:true}
+          );
         },
         error => {
           return Promise.reject(error);
