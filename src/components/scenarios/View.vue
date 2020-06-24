@@ -5,16 +5,36 @@
         <h1 class="title">{{ currentScenario.title }}</h1>
         <div class="update">Updated {{ currentScenario.last_update }}</div>
         <Status :status="currentScenario.status"/>
+        <button
+          v-if="currentScenario.status !== 'pending'"
+          type="button" class="ScenarioAction"
+          @click="changeStatus('pending')"
+        >
+          Clear
+        </button>
       </header>
       <ol class="scenario-content">
         <li v-for="(line, key) in currentScenario.text_lines" :key="key">
           <ScenarioText :line="line"/>
         </li>
         <li>
-          {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
-          <button type="button" @click="changeStatus('approved')">Approve</button>
-          <button type="button" @click="changeStatus('rejected')">Reject</button>
-          <button type="button" @click="changeStatus('pending')">Undo</button>
+          <div class="scenario-item-text">
+            <div class="type"></div>
+            <div class="text final">
+              <div>
+                {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
+                <span v-if="currentScenario.status === 'pending'">
+                  <button type="button" class="ScenarioAction approve" @click="changeStatus('approved')">
+                      Approve
+                  </button>
+                  <button type="button" class="ScenarioAction reject" @click="changeStatus('rejected')">
+                      Reject
+                  </button>
+                </span>
+                <Loading v-if="loadingStatus"/>
+              </div>
+            </div>
+          </div>
         </li>
       </ol>
       <button type="button">Prev</button>
@@ -40,7 +60,7 @@ export default {
     ScenarioText, Loading, Status
   },
   computed: {
-    ...mapState('scenario', ['currentScenario', 'loadingScenario']),
+    ...mapState('scenario', ['currentScenario', 'loadingScenario', 'loadingStatus']),
     scenarioSelected () {
       return !!this.currentScenario.id
     }
@@ -62,6 +82,7 @@ export default {
 
   .scenario-header {
     margin-bottom: 15px;
+    margin-left: 126px;
 
     .title {
       display: inline-block;
@@ -81,7 +102,37 @@ export default {
     @include reset-list;
 
     > li {
-      padding: 20px 10px;
+      padding: 10px;
+    }
+  }
+  .scenario-item-text .text.final > div {
+    background-color: #e6e6e6;
+    padding: 5px 20px;
+    position: relative;
+  }
+  .ScenarioAction {
+    background: transparent;
+    border: none;
+    color: $color-text-grey;
+    cursor: pointer;
+    font-family: "Athelas";
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: underline;
+    transition-duration: .4s;
+
+    &.approve {
+      color: $color-green;
+    }
+    &.reject {
+      color: $color-red;
+    }
+    &:hover {
+      color: #000;
+      text-decoration: none;
+    }
+    &:focus {
+      outline: none;
     }
   }
 }

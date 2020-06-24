@@ -24,7 +24,7 @@ export default {
     opacity: 0.6;
     padding-top: .8rem;
     text-transform: uppercase;
-    width: 80px;
+    width: $scenario-type__width;
   }
   .text {
     box-sizing: border-box;
