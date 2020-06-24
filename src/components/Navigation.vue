@@ -1,28 +1,38 @@
 <template>
-  <nav class="main-nav">
-    <div class="logo">
-      <router-link to="/scenarios">
-        <img alt="Rain logo" src="../assets/rain_logo.png">
-      </router-link>
-    </div>
-    <div class="links">
-      <router-link to="/scenarios" title="Scenarios">
-        <font-awesome-icon icon="layer-group" class="icon"/>
-      </router-link>
-      <a href="/logout" class="logout" @click.prevent="logOut" title="Logout">
-        <font-awesome-icon icon="sign-out-alt" class="icon"/>
-      </a>
-    </div>
-  </nav>
+  <div class="main-nav-wrapper" :class="{ mobileShow }">
+    <nav class="main-nav">
+      <div class="logo">
+        <router-link to="/scenarios">
+          <img alt="Rain logo" src="../assets/rain_logo.png">
+        </router-link>
+      </div>
+      <div class="links">
+        <router-link to="/scenarios" title="Scenarios">
+          <font-awesome-icon icon="layer-group" class="icon"/>
+        </router-link>
+        <a href="/logout" class="logout" @click.prevent="logOut" title="Logout">
+          <font-awesome-icon icon="sign-out-alt" class="icon"/>
+        </a>
+      </div>
+    </nav>
+    <button type="button" class="mobile-nav-bt" @click="mobileNavToggle">MOBILE</button>
+    <div class="overlay-back" @click="mobileNavToggle"></div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Navigation',
+  data: () => ({
+    mobileShow: true,
+  }),
   methods: {
-    logOut() {
+    logOut () {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
+    },
+    mobileNavToggle () {
+      this.mobileShow = !this.mobileShow
     }
   },
 }
@@ -37,11 +47,13 @@ export default {
   flex-wrap: wrap;
   height: 100vh;
   left: 0;
+  margin-left: - $desktop__navigation__width;
   max-width: $desktop__navigation__width;
   position: fixed;
   top: 0;
+  transition-duration: .4s;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 
   .logo {
     border-bottom: solid 1px $color-line-grey;
@@ -76,6 +88,41 @@ export default {
         color: #000;
       }
     }
+  }
+}
+.mobile-nav-bt {
+  bottom: 0;
+  position: fixed;
+  right: 0;
+  z-index: 3;
+}
+.overlay-back {
+  backdrop-filter: blur(2px);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  margin-right: 100%;
+  opacity: 0;
+  transition: opacity .5;
+}
+
+// Show mobile navigation
+.main-nav-wrapper.mobileShow {
+  .main-nav {
+    margin-left: 0;
+  }
+  .overlay-back {
+    margin-right: 0;
+    opacity: 1;
+  }
+}
+
+@media (min-width: $breakpoint_tablet) {
+  .main-nav {
+    margin-left: 0;
   }
 }
 </style>

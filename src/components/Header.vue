@@ -34,15 +34,38 @@ export default {
 .main-header {
   align-items: center;
   border-bottom: solid 1px $color-line-grey;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  height: $desktop__header__height;
+  padding: 12px 0;
+  text-align: center;
   width: 100%;
 
   .main-title {
+    font-size: 1.6rem;
     font-weight: bold;
-    font-size: 2.3rem;
-    padding: 0 20px;
+    padding: 0 10px;
+    width: 100%;
+  }
+}
+@media (min-width: $breakpoint_movile_large) {
+  .main-header {
+    .main-title {
+      padding: 0 20px;
+      width: auto;
+    }
+  }
+}
+@media (min-width: $breakpoint_tablet) {
+  .main-header {
+    height: $desktop__header__height;
+    padding: 0;
+
+    .main-title {
+      font-size: 2.3rem;
+      padding: 0 20px;
+      width: auto;
+    }
   }
 }
 </style>

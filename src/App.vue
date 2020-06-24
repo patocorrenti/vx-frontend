@@ -43,7 +43,6 @@ export default {
     box-sizing: border-box;
   }
   .content {
-    padding-left: $desktop__navigation__width;
     position: relative;
     width: 100%;
 
@@ -52,8 +51,6 @@ export default {
     }
   }
   .main-content {
-    height: $desktop__main-content__height;
-    overflow-y: auto;
   }
 
   // Login screen
@@ -70,6 +67,16 @@ export default {
       height: auto;
       padding: 10vh 10px 20px;
       min-height: 100vh;
+    }
+  }
+
+  @media (min-width: $breakpoint_tablet) {
+    .main-content {
+      height: $desktop__main-content__height;
+      overflow-y: auto;
+    }
+    .content {
+      padding-left: $desktop__navigation__width;
     }
   }
 
