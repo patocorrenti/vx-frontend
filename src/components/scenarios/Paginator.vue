@@ -5,7 +5,7 @@
       Previous
     </button>
     <button class="next" v-if="nextScenario" type="button" @click="getScenario(nextScenario)">
-      Continue 
+      Next 
       <font-awesome-icon icon="chevron-right" class="icon"/>
     </button>
   </nav>
@@ -40,9 +40,11 @@ export default {
     cursor: pointer;
     display: flex;
     font-family: $font-sans;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 0;
     transition-duration: color .4s;
+    font-weight: bold;
+    text-transform: uppercase;
 
     .icon {
       padding: 0 4px;
