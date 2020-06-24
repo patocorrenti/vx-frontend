@@ -113,7 +113,7 @@ export default {
       border-left-color: transparent;
       border-right-color: transparent;
       border-top-color: transparent;
-      font-family: 'Circular';
+      font-family: $font-sans;
       font-size: 1.8rem;
       padding: 10px 5px;
       transition-duration: .5s;

@@ -37,7 +37,7 @@ export default {
   color: #2c3e50;
   display: flex;
   flex-wrap: wrap;
-  font-family: 'Circular';
+  font-family: $font-sans;
 
   > * {
     box-sizing: border-box;

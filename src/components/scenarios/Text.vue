@@ -30,14 +30,14 @@ export default {
     box-sizing: border-box;
     color: #000;
     flex: 1 1 0;
-    font-family: "Athelas";
+    font-family: $font-serif;
     font-size: 1.7rem;
     line-height: 1.75;
     max-width: 663px;
     padding-left: 36px;
   }
   &.scenario_setup {
-    .text { font-family: "Circular"; font-weight: bold; font-size: 1.6rem; }
+    .text { font-family: $font-sans; font-weight: bold; font-size: 1.6rem; }
   }
   &.user {
     .type { color: $color-type-user; }

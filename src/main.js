@@ -5,10 +5,10 @@ import store from './store'
 import apiInterceptors from './services/api.interceptors'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSpinner, faCheckCircle, faTimesCircle, faLayerGroup, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, faCheckCircle, faTimesCircle, faLayerGroup, faSignOutAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faSpinner, faCheckCircle, faTimesCircle, faLayerGroup, faSignOutAlt)
+library.add(faSpinner, faCheckCircle, faTimesCircle, faLayerGroup, faSignOutAlt, faChevronLeft, faChevronRight)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

@@ -36,9 +36,13 @@
             </div>
           </div>
         </li>
+        <li>
+          <div class="scenario-item-text paginator">
+            <div class="type"></div>
+            <div class="text"><Paginator/></div>
+          </div>
+        </li>
       </ol>
-      <button type="button">Prev</button>
-      <button type="button">Next</button>
     </div>
     <div v-else>
       Select a User Scenario
@@ -51,13 +55,14 @@
 import ScenarioText from '@/components/scenarios/Text.vue';
 import Loading from '@/components/Loading.vue';
 import Status from '@/components/scenarios/Status.vue';
+import Paginator from '@/components/scenarios/Paginator.vue';
 import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Scenario_View',
   props: ['scenario'],
   components: {
-    ScenarioText, Loading, Status
+    ScenarioText, Loading, Status, Paginator
   },
   computed: {
     ...mapState('scenario', ['currentScenario', 'loadingScenario', 'loadingStatus']),
@@ -115,7 +120,7 @@ export default {
     border: none;
     color: $color-text-grey;
     cursor: pointer;
-    font-family: "Athelas";
+    font-family: $font-serif;
     font-size: 1.8rem;
     font-weight: bold;
     text-decoration: underline;

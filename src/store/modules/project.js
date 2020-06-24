@@ -8,11 +8,29 @@ const initialState = {
 
 export const project = {
   namespaced: true,
+  
   state: initialState,
+
   getters: {
-    currentProject (state) { return state.projects[state.currentProject] },
-    projectName (state) { return state.projects.length ? state.projects[state.currentProject].name : '' }
+    currentProject (state) {
+      return state.projects[state.currentProject]
+    },
+    projectName (state) {
+      return state.projects.length ? state.projects[state.currentProject].name : ''
+    },
+    scenarios (state) {
+      return state.projects[state.currentProject].scenarios
+    },
+    prevScenario (state, getters, rootState) {
+      const index  = getters.scenarios.findIndex(scenario => scenario.id === rootState.scenario.currentScenario.id)
+      return index - 1 >= 0 ? getters.scenarios[index - 1].id : false
+    },
+    nextScenario (state, getters, rootState) {
+      const index  = getters.scenarios.findIndex(scenario => scenario.id === rootState.scenario.currentScenario.id)
+      return index + 1 < getters.scenarios.length ? getters.scenarios[index + 1].id : false
+    }
   },
+
   actions: {
     getProjects ({ state, commit }) {
       state.loadingProjects = true
@@ -26,6 +44,7 @@ export const project = {
       ).finally( () => { state.loadingProjects = false });
     }
   },
+
   mutations: {
     saveProjects (state, projects) {
       state.projects = projects;
