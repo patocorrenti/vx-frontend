@@ -15,7 +15,9 @@
         </a>
       </div>
     </nav>
-    <button type="button" class="mobile-nav-bt" @click="mobileNavToggle">MOBILE</button>
+    <button type="button" class="mobile-nav-bt" @click="mobileNavToggle">
+      <font-awesome-icon icon="bars" class="icon"/>
+    </button>
     <div class="overlay-back" @click="mobileNavToggle"></div>
   </div>
 </template>
@@ -91,10 +93,21 @@ export default {
   }
 }
 .mobile-nav-bt {
-  bottom: 0;
+  background: #fff;
+  border: 1px solid $color-line-grey;
+  color: $color-text-grey;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 5px 7px;
   position: fixed;
-  right: 0;
+  right: 15px;
+  top: 30px;
   z-index: 5;
+
+  &:hover, &:focus {
+    outline: none;
+    color: #000;
+  }
 }
 .overlay-back {
   backdrop-filter: blur(2px);

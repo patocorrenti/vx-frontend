@@ -19,7 +19,7 @@ export default {
     ...mapGetters('project', ['currentProject']),
     scenarios () {
       return this.currentProject ? this.currentProject.scenarios : false
-    } 
+    }
   },
 }
 </script>

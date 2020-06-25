@@ -36,7 +36,7 @@ export default {
   name: 'Scenarios_List',
   props: ['scenarios'],
   data: () => ({
-    showMobile: true,
+    showMobile: false,
   }),
   components: {
     Status
@@ -81,6 +81,20 @@ export default {
     font-weight: bold;
     justify-content: space-between;
     padding: 15px;
+
+    > button {
+      background-color: $color-light-grey;
+      border: 1px solid $color-line-grey;
+      color: $color-text-grey;
+      cursor: pointer;
+      padding: 5px 8px;
+      transition-duration: .5s;
+
+      &:hover, &:focus {
+        color: #000;
+        outline: none;
+      }
+    }
   }
   > ul {
     @include reset-list;
