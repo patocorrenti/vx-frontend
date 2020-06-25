@@ -3,7 +3,7 @@
     <div v-if="scenarioSelected">
       <header class="scenario-header">
         <h1 class="title">{{ currentScenario.title }}</h1>
-        <div class="update">Updated {{ currentScenario.last_update }}</div>
+        <div class="update">Updated {{ currentScenario.last_update | moment("MM/D/YYYY") }}</div>
         <Status :status="currentScenario.status"/>
         <button
           v-if="currentScenario.status !== 'pending'"
@@ -22,7 +22,9 @@
             <div class="type"></div>
             <div class="text final">
               <div>
-                {{ currentScenario.title }} was updated on {{ currentScenario.last_update }}
+                {{ currentScenario.title }}
+                was updated on
+                {{ currentScenario.last_update | moment("MM/D/YYYY") }}
                 <span v-if="currentScenario.status === 'pending'">
                   <button type="button" class="ScenarioAction approve" @click="changeStatus('approved')">
                       Approve

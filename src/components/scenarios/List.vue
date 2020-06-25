@@ -188,7 +188,7 @@ export default {
     }
     .scenario-item {
       padding: 25px 20px;
-      .title.excerpt {
+      .title, .excerpt {
         font-size: 1.8rem;
       }
     }

@@ -13,6 +13,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
+Vue.use(require('vue-moment'))
+
 apiInterceptors()
 
 new Vue({
