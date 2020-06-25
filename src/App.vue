@@ -50,8 +50,6 @@ export default {
       box-sizing: border-box;
     }
   }
-  .main-content {
-  }
 
   // Login screen
   &:not(.loggedIn) {

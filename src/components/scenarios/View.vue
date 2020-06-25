@@ -80,17 +80,15 @@ export default {
 .scenarios-view {
   box-sizing: border-box;
   flex: 1 1 0;
-  height: $desktop__main-content__height;
   overflow: auto;
-  padding: 40px 20px;
+  padding: 40px 15px 40px 25px;
   position: relative;
 
   .scenario-header {
     margin-bottom: 15px;
-    margin-left: 126px;
+    padding: 0 10px;
 
     .title {
-      display: inline-block;
       font-size: 2.5rem;
       margin: 0;
       vertical-align: middle;
@@ -98,7 +96,6 @@ export default {
     .update {
       display: inline-block;
       font-size: 1.3rem;
-      margin-left: 10px;
       vertical-align: middle;
       text-transform: uppercase;
     }
@@ -139,6 +136,27 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+}
+@media (min-width: $breakpoint_movile_large) {
+  .scenarios-view {
+    height: $desktop__main-content__height;
+    
+    .scenario-header {
+      margin-left: 116px;
+      
+      .title {
+        display: inline-block;
+      }
+      .update {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint_tablet) {
+  .scenarios-view {
+    padding: 40px 20px;
   }
 }
 </style>

@@ -24,7 +24,7 @@
 export default {
   name: 'Navigation',
   data: () => ({
-    mobileShow: true,
+    mobileShow: false,
   }),
   methods: {
     logOut () {
@@ -53,7 +53,7 @@ export default {
   top: 0;
   transition-duration: .4s;
   width: 100%;
-  z-index: 5;
+  z-index: 20;
 
   .logo {
     border-bottom: solid 1px $color-line-grey;
@@ -94,7 +94,7 @@ export default {
   bottom: 0;
   position: fixed;
   right: 0;
-  z-index: 3;
+  z-index: 5;
 }
 .overlay-back {
   backdrop-filter: blur(2px);
@@ -103,10 +103,10 @@ export default {
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 4;
+  z-index: 19;
   margin-right: 100%;
   opacity: 0;
-  transition: opacity .5;
+  transition: opacity .5s;
 }
 
 // Show mobile navigation
@@ -123,6 +123,9 @@ export default {
 @media (min-width: $breakpoint_tablet) {
   .main-nav {
     margin-left: 0;
+  }
+  .overlay-back, .mobile-nav-bt {
+    display: none;
   }
 }
 </style>
